@@ -73,11 +73,13 @@ a {
 
 /* Buttons */
 .btn {
+  color: #ffffff;
   padding: 1rem 1.5rem;
-  background: white;
+  background: var(--primaryIconColor);
   border: 1.5px solid var(--borderColor);
   cursor: pointer;
   transition: 0.2s ease-in-out;
+  border-radius: 20px;
 }
 
 .btn:hover {
@@ -88,6 +90,7 @@ a {
 .section-title {
   margin: 1rem 0 4rem;
   font-size: 2rem;
+  
 }
 
 .pre-title {
@@ -121,6 +124,7 @@ a {
 }
 
 /* --- Logo and Navigation Menu --- */
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -134,6 +138,14 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 3rem;
+
+}
+nav ul li:not(:last-child) a { /* Select anchor tags inside specific <li> elements except the last one */
+  transition: color 0.3s ease; /* Add transition for smooth effect */
+}
+
+nav ul li:not(:last-child) a:hover { /* Apply hover effect only to specific <li> elements */
+  color: var(--primaryIconColor); /* Change text color on hover */
 }
 
 /* Logo */
@@ -142,11 +154,18 @@ nav ul {
   align-items: center;
   font-weight: 700;
   font-size: 1.5rem;
+   transition: color 0.3s ease; /* Menambahkan efek transisi untuk perubahan warna */
 }
 
 .logo a {
   color: var(--primaryTextColor);
 }
+
+/* Efek hover pada teks logo */
+.logo:hover a {
+  color: var(--primaryIconColor); /* Ubah warna saat hover */
+}
+
 
 /* Navigation Menu */
 nav ul li {
@@ -157,6 +176,8 @@ nav ul li {
 nav ul li a {
   color: var(--primaryTextColor);
 }
+
+
 
 /* Burger - Save for later on video */
 .burger div {
@@ -175,6 +196,22 @@ nav ul li a {
   top: 33px;
   right: 35px;
 }
+
+@keyframes waveAnimation {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-20deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.wave {
+  display: inline-block;
+  animation-name: waveAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
 
 .start-button {
   background-color: #7e74f1;
@@ -197,7 +234,7 @@ nav ul li a {
 
 /* Hero Section */
 #hero {
-  height: 720px;
+  height: 620px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   /* We're not going to use automatic template columns, because we need to know when the columns is go below. So we can exchange the order of the element */
@@ -230,6 +267,26 @@ nav ul li a {
   z-index: 1;
   /* Diberikan nilai z-index yang lebih tinggi */
 }
+
+.hero-left {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 2s ease, transform 2s ease;
+}
+
+.hero-left.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-right img, .hero-right svg {
+  transition: transform 0.5s ease-in-out; /* Menambahkan transisi pada transformasi */
+}
+
+.hero-right img:hover, .hero-right svg:hover {
+  transform: scale(1.1); /* Efek perbesaran saat dihover */
+}
+
 
 /* CSS untuk kontainer gambar dan SVG */
 .img-wrapper {
@@ -354,14 +411,100 @@ nav ul li a {
   border: 1px solid var(--borderColor);
   padding: 0.4rem 1rem;
   color: var(--secondaryTextColor);
+  border-radius: 20px;
 }
 
 .portfolio-tags div {
+  background-color: var(--primaryIconColor);
   font-size: 0.9rem;
   border: 1px solid var(--borderColor);
   padding: 0.4rem 1rem;
-  color: var(--secondaryTextColor);
+  color: var(--borderColor);
 }
+
+
+
+.wrapper {
+    display: flex;
+    max-width: 1200px;
+    position: relative;
+}
+
+.wrapper i {
+    top: 50%;
+    height: 44px;
+    width: 44px;
+    color: #0057da;
+    cursor: pointer;
+    font-size: 1.15rem;
+    position: absolute;
+    text-align: center;
+    line-height: 44px;
+    background: var(--primaryIconColor);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.1s linear;
+}
+
+.wrapper i:active {
+    transform: translateY(-50%) scale(0.9);
+}
+
+.wrapper i:hover {
+    background: #000000;
+}
+
+.wrapper i:first-child {
+    left: -22px;
+    display: none;
+}
+
+.wrapper i:last-child {
+    right: -22px;
+}
+
+.wrapper .carousel {
+    font-size: 0px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+}
+
+.carousel.dragging {
+    cursor: grab;
+    scroll-behavior: auto;
+}
+
+.carousel.dragging img {
+    pointer-events: none;
+}
+
+.carousel img {
+    height: 340px;
+    object-fit: cover;
+    user-select: none;
+    margin-left: 14px;
+    width: calc(100% / 2);
+}
+
+.carousel img:first-child {
+    margin-left: 0px;
+}
+
+@media screen and (max-width: 900px) {
+    .carousel img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .carousel img {
+        width: 100%;
+    }
+}
+
+
 
 /* Skills and Education */
 #skills {
@@ -526,6 +669,7 @@ footer {
 
 .footer-icons {
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .footer-icons a {
@@ -538,4 +682,14 @@ footer {
 
 .footer-icons a:hover svg {
   fill: #000;
+}
+
+.footer-icons svg {
+  fill: #3e3f40;
+  /* Warna ikon */
+}
+
+.footer-icons a:hover svg {
+  fill: var(--primaryIconColor);
+  /* Warna ikon saat dihover */
 }
