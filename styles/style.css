@@ -440,7 +440,7 @@ nav ul li a {
     position: absolute;
     text-align: center;
     line-height: 44px;
-    background: var(--primaryIconColor);
+    background: #ffffff;
     border-radius: 50%;
     transform: translateY(-50%);
     transition: transform 0.1s linear;
