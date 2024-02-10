@@ -107,8 +107,8 @@ a {
 .pre-title::before {
   content: "";
   width: 30px;
-  height: 1px;
-  background: var(--lineColor);
+  height: 2px;
+  background: var(--primaryIconColor);
   position: absolute;
   display: block;
   left: 0;
