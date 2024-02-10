@@ -119,7 +119,7 @@ a {
 .grid-3 {
   display: grid;
   /* grid-template-columns: 1fr 1fr 1fr; use this first, use code below when its time for explaining responsive design part */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 3rem;
 }
 
@@ -306,7 +306,7 @@ nav ul li a {
 }
 /* Services Section */
 #services {
-  background-color: var(--secondaryBackgroundColor);
+  background-color: #ffffff;
   padding: var(--sectionPadding);
 }
 
@@ -323,6 +323,7 @@ nav ul li a {
   text-align: center;
   background: var(--primaryBackgroundColor);
   border-radius: var(--itemBorderRadius);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Efek shadow */
 }
 
 .service h4 {
@@ -440,7 +441,7 @@ nav ul li a {
     position: absolute;
     text-align: center;
     line-height: 44px;
-    background: #ffffff;
+    background: var(--primaryIconColor);
     border-radius: 50%;
     transform: translateY(-50%);
     transition: transform 0.1s linear;
@@ -453,6 +454,7 @@ nav ul li a {
 .wrapper i:hover {
     background: #ffffff;
 }
+
 
 .wrapper i:first-child {
     left: -22px;
